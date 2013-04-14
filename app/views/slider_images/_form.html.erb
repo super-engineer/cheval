@@ -1,0 +1,26 @@
+<%= form_for @slider_image, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="clearfix">
+    <div class="pull-left">
+      <div class="control-group">
+        <%= f.label :hidden, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.check_box :hidden, :class => 'check_box' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :image, "#{@slider_image.persisted? ? 'Change Image' : 'Image' }", :class => 'control-label' %>
+        <div class="controls">
+          <%= f.file_field :image, :class => 'file_field' %>
+        </div>
+      </div>
+    </div>
+    <div class="pull-left">
+      <%= image_tag @slider_image.image.url(:thumb) if @slider_image.persisted? %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-success' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                slider_images_path, :class => 'btn' %>
+  </div>
+<% end %>

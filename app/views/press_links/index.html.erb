@@ -1,0 +1,37 @@
+<%- model_class = PressLink -%>
+<div class="page-header">
+  <h1>
+    <%=t '.title', :default => model_class.model_name.human.pluralize %>
+    <%= link_to new_press_link_path, :class => 'btn btn-success pull-right' do %>
+      <i class='icon-plus icon-white'></i> Add Press Link
+    <% end %>
+  </h1>
+</div>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Thumbnail</th>
+      <th><%= model_class.human_attribute_name(:url) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @press_links.each do |press_link| %>
+      <tr>
+        <td><%= press_link.image.url(:thumb) %></td>
+        <td><%= link_to press_link.url %></td>
+        <td><%= press_link.description %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_press_link_path(press_link), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      press_link_path(press_link),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

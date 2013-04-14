@@ -1,0 +1,65 @@
+<div id="gallery2">
+  <ul class="bjqs">
+    <% SliderImage.where(hidden: false).each do |slider| %>
+      <li><img src="<%= slider.image.url(:cropped) %>"></li>
+    <% end %>
+  </ul>
+</div>
+<div class="main_content">
+  <div class="center_content home_content">
+    <div class="grid_3">
+      <div class="content_inner">
+      <h1><a href="art_club.html">The Chevalier Sessions</a></h1>
+      <% unless (event = Event.upcoming.first).nil? %>
+        <img src="<%= event.poster.url(:cropped) %>" width="270px" height="270px" class="center_img">
+        <h2><a href="<%= show_event_path(event.id) %>"><%= event.name %></a></h2>
+        <p><%= event.description %></p>
+      <% end %>
+      </div>
+    </div>
+    <div class="grid_3">
+      <div class="content_inner">
+      <h1><a href="menu#cheval-tab">Special Menu</a></h1>
+      <% special_menu = SpecialMenu.where("hidden = false").order("created_at DESC").first %>
+      <% unless special_menu.nil? %>
+        <div class="special-menu-image">
+          <img src="<%= special_menu.menu_images.first.image.url(:cropped) rescue "" %>" class="center_img">
+        </div>
+        <h2><a href="menu#specials<%= special_menu.id %>"><%= special_menu.name %></a></h2>
+        <p><%= special_menu.description %></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="grid_3">
+      <div class="content_inner">
+      <img src="/assets/twitter.png" style="margin-top:35px;" class="center_img">
+      <p class="large_content">"You aint never seen a mojito like this. Ask bartender Lawrence to make you one. pic.twitter.com/XDIxT8IuLq"</p>
+      <h1>Media</h1>
+        <div class="gallery">
+          <img src="/assets/upcoming.jpg" width="100">
+          <img src="/assets/upcoming.jpg" width="100">
+          <img src="/assets/upcoming.jpg" width="100">
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $("#gallery2").bjqs({
+      'width' : 960,
+      'height' : 300,
+      'automatic' : false,
+      'animtype' : 'slide'
+    });
+  });
+</script>
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. 
+<script>
+  var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script> -->

@@ -1,0 +1,106 @@
+<div class="menu_links">
+  <ul class="menu">
+    <li class="active"><a href="#cheval">Bar Menu</a></li>
+    <li><a href="#restaurant">Food Menu</a></li>
+    <li><a href="#management">Express Menu</a></li>
+    <% SpecialMenu.all.each do |special_menu| %>    
+      <li><a href="#specials<%= special_menu.id %>"><%= special_menu.name %></a></li>
+    <% end %>
+  </ul>
+</div>
+<div class="menu_content" id="cheval">
+  <div id="regular_menu_slider">
+    <ul class="bjqs">
+      <li><img src="/assets/bar1.png"></li>
+      <li><img src="/assets/bar2.png"></li>
+      <li><img src="/assets/bar3.png"></li>
+      <li><img src="/assets/bar4.png"></li>
+      <li><img src="/assets/bar5.png"></li>
+      <li><img src="/assets/bar6.png"></li>
+      <li><img src="/assets/bar7.png"></li>
+      <li><img src="/assets/bar8.png"></li>
+      <li><img src="/assets/bar9.png"></li>
+      <li><img src="/assets/bar10.png"></li>
+      <li><img src="/assets/bar11.png"></li>
+      <li><img src="/assets/bar12.png"></li>
+      <li><img src="/assets/bar13.png"></li>
+      <li><img src="/assets/bar14.png"></li>
+      <li><img src="/assets/bar15.png"></li>
+      <li><img src="/assets/bar16.png"></li>
+      <li><img src="/assets/bar17.png"></li>
+      <li><img src="/assets/bar18.png"></li>
+      <li><img src="/assets/bar19.png"></li>
+    </ul>
+  </div>
+</div>
+<div class="menu_content" id="restaurant">
+  <div id="food_menu_slider">
+    <ul class="bjqs">
+      <li><img src="/assets/food1.png"></li>
+      <li><img src="/assets/food2.png"></li>
+      <li><img src="/assets/food3.png"></li>
+      <li><img src="/assets/food5.png"></li>
+      <li><img src="/assets/food6.png"></li>
+    </ul>
+  </div>
+</div>
+<div class="menu_content" id="management">
+  <div id="express_menu_slider">
+    <ul class="bjqs">
+      <li><img src="/assets/menu.png"></li>
+      <li><img src="/assets/menu.png"></li>
+    </ul>
+  </div>
+</div>
+<% SpecialMenu.all.each do |special_menu| %>
+  <div class="menu_content" id="specials<%= special_menu.id %>">
+    <div id="special_menu_slider<%= special_menu.id %>">
+      <ul class="bjqs">
+        <% special_menu.menu_images.each do |menu_image| %>
+          <li><img src="<%= menu_image.image.url(:cropped) %>"></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>   
+<% end %>
+<script type="text/javascript">
+  $(function(){
+    $(".menu").tabify();
+    $("#regular_menu_slider").bjqs({
+      'width' : 510,
+      'height' : 700,
+      'automatic' : false,
+      'animtype' : 'slide'
+    });
+
+    $("#express_menu_slider").bjqs({
+      'width' : 510,
+      'height' : 700,
+      'automatic' : false,
+      'animtype' : 'slide'
+    });    
+
+    $("#food_menu_slider").bjqs({
+      'width' : 510,
+      'height' : 700,
+      'automatic' : false,
+      'animtype' : 'slide'
+    });      
+
+    <% SpecialMenu.all.each do |special_menu| %>
+      $("#special_menu_slider<%= special_menu.id %>").bjqs({
+        'width' : 510,
+        'height' : 700,
+        'automatic' : false,
+        'animtype' : 'slide'
+      });            
+    <% end %>
+  });
+</script>
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. 
+<script>
+  var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script> -->

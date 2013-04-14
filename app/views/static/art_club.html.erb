@@ -1,0 +1,49 @@
+<div class="main_content art_content">
+  <div class="center_content">
+    <div class="grid_3">
+      <div class="content_inner">
+      <img src="/assets/art_logo.png" class="center_img">
+      <h1 style="text-align:center;">The Cheval Art Club</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi aliquet tincidunt rhoncus. Morbi tempor condimentum dapibus. Pellentesque lacinia orci sed augue condimentum dictum. Cras sed aliquet mauris.</p>
+      </div>
+    </div>
+    <div class="grid_6">
+      <div class="content_inner">
+        <% unless params[:show_past_events].blank? %>
+          <h1 class="fleft">Past events</h1>
+          <a href="<%= art_club_path %>" class="past_events_link fright" style="margin-left:15px;"><i class=" icon-calendar"></i> Hide Past Events</a>
+          <div class="clear"></div>
+          <% Event.past.each do |event| %>
+            <div class="event_container">
+              <%= image_tag event.poster.url(:cropped), :size => "250x250" %>
+              <div class="link_content">
+                <p class="date"><%= event.scheduled_on.strftime("#{event.scheduled_on.day.ordinalize} %b %Y") %></p>
+                <a href="<%= show_event_path(:id => event.id) %>"><%= event.name %></a>
+                <p><%= event.description %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <h1 class="fleft">Upcoming events</h1>
+        <a href="<%= art_club_path(:show_past_events => "true") %>" class="past_events_link fright" style="margin-left:15px;"><i class=" icon-calendar"></i> View Past Events</a>
+        <div class="clear"></div>
+        <% if Event.upcoming.count > 0 %>
+          <% Event.upcoming.each do |event| %>
+            <div class="event_container">
+              <%= image_tag event.poster.url(:cropped), :size => "250x250" %>
+              <div class="link_content">
+                <p class="date"><%= event.scheduled_on.strftime("#{event.scheduled_on.day.ordinalize} %b %Y") %></p>
+                <a href="<%= show_event_path(:id => event.id) %>"><%= event.name %></a>
+                <p><%= event.description %></p>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <h3>
+            Looks like all artists are on vacation. No upcoming events scheduled for the moment.</h3>
+        <% end %>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>

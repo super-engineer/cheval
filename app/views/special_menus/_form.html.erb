@@ -1,0 +1,53 @@
+<%= nested_form_for @special_menu, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => '', :size => "50x5", :style => "width:auto" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :hidden, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :hidden, :class => 'check_box' %>
+    </div>
+  </div>
+  <%= f.fields_for :menu_images do |menu_image_form| %>
+    <div class="clearfix">
+      <h4>Menu page</h4>
+      <hr>
+      <div class="pull-left">
+        <div class="control-group">
+          <%= menu_image_form.label :image, menu_image_form.object.persisted? ? "Change image" : "Page image", :class => 'control-label' %>
+          <div class="controls">      
+            <%= menu_image_form.file_field :image, :class => 'file_field' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= menu_image_form.label :page_number, :class => 'control-label' %>
+          <div class="controls">      
+            <%= menu_image_form.number_field :page_number, :class => 'text_field' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <span style="padding-left:75px"></span><%= menu_image_form.link_to_remove "Remove this menu page" %>
+        </div>
+      </div>
+      <div class="pull-left" style="padding-left: 50px">
+        <% if menu_image_form.object.persisted? %>
+          <%= link_to image_tag(menu_image_form.object.image.url(:thumb)), menu_image_form.object.image.url(:cropped), :target => "_blank" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <%= f.link_to_add "Add a menu page", :menu_images%>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-success' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), special_menus_path, :class => 'btn' %>
+  </div>
+<% end %>
