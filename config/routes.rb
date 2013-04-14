@@ -13,7 +13,7 @@ Cheval::Application.routes.draw do
   root to: "static#index"
 
   scope "/admin" do
-    root to: "static#index"
+    root to: "events#index"
     resources :events
     resources :slider_images  
     resources :special_menus
