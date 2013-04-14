@@ -20,6 +20,14 @@ class StaticController < ApplicationController
   end
 
   def show_event
+    @event = Event.find(params[:id])
+  end
+
+  def upcoming_events
+
+  end
+
+  def past_events
 
   end
 

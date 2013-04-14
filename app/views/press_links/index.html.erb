@@ -11,7 +11,7 @@
   <thead>
     <tr>
       <th>Thumbnail</th>
-      <th><%= model_class.human_attribute_name(:url) %></th>
+      <th>Link Url</th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -19,9 +19,9 @@
   <tbody>
     <% @press_links.each do |press_link| %>
       <tr>
-        <td><%= press_link.image.url(:thumb) %></td>
-        <td><%= link_to press_link.url %></td>
-        <td><%= press_link.description %></td>
+        <td><%= image_tag press_link.image.url(:thumb) %></td>
+        <td><%= link_to press_link.url, press_link.url, :target => "_blank" %></td>
+        <td><%= truncate(press_link.description, length: 160) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_press_link_path(press_link), :class => 'btn btn-mini' %>

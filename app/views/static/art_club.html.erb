@@ -9,23 +9,8 @@
     </div>
     <div class="grid_6">
       <div class="content_inner">
-        <% unless params[:show_past_events].blank? %>
-          <h1 class="fleft">Past events</h1>
-          <a href="<%= art_club_path %>" class="past_events_link fright" style="margin-left:15px;"><i class=" icon-calendar"></i> Hide Past Events</a>
-          <div class="clear"></div>
-          <% Event.past.each do |event| %>
-            <div class="event_container">
-              <%= image_tag event.poster.url(:cropped), :size => "250x250" %>
-              <div class="link_content">
-                <p class="date"><%= event.scheduled_on.strftime("#{event.scheduled_on.day.ordinalize} %b %Y") %></p>
-                <a href="<%= show_event_path(:id => event.id) %>"><%= event.name %></a>
-                <p><%= event.description %></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
         <h1 class="fleft">Upcoming events</h1>
-        <a href="<%= art_club_path(:show_past_events => "true") %>" class="past_events_link fright" style="margin-left:15px;"><i class=" icon-calendar"></i> View Past Events</a>
+        <a href="<%= past_events_path %>" class="past_events_link fright" style="margin-left:15px;"><i class=" icon-calendar"></i> View Past Events</a>
         <div class="clear"></div>
         <% if Event.upcoming.count > 0 %>
           <% Event.upcoming.each do |event| %>

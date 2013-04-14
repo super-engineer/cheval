@@ -14,6 +14,7 @@ gem 'rvm-capistrano', '~> 1.2.7'
 gem 'paperclip'
 gem "gritter", "1.0.3"
 gem "nested_form"
+gem 'tinymce-rails'
 
 group :production do
   gem 'pg'

@@ -19,6 +19,7 @@
 //= script
 //= require jquery_nested_form
 //= require gritter
+//= require tinymce
 //= require_tree .
 
 // $(function(){

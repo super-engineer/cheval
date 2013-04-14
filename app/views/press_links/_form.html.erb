@@ -1,16 +1,30 @@
 <%= form_for @press_link, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :url, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :url, :class => 'text_field' %>
+  <div class="pull-left span9">
+    <div class="control-group">
+      <%= f.label :url, "Link url", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :url, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :image, @press_link.persisted? ? "Change thumbnail" : "Thumbnail", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.file_field :image, :class => 'file_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :description, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :description, :class => 'text_area', :size => "60x8", :style => "width:auto"%>
+      </div>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :description, :class => 'text_area', :size => "50x5", :style => "width:auto"%>
-    </div>
+  <div class="pull-left span2">
+    <% unless @press_link.image.blank? %>
+      <%= image_tag @press_link.image.url(:thumb) %>
+    <% end %>
   </div>
+  <div class="clearfix"></div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
