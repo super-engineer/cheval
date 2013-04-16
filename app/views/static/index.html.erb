@@ -40,9 +40,9 @@
       </div>
       <h1>Media</h1>
         <div class="gallery">
-          <img src="/assets/upcoming.jpg" width="100">
-          <img src="/assets/upcoming.jpg" width="100">
-          <img src="/assets/upcoming.jpg" width="100">
+          <% EventPicture.order("created_at DESC").limit(3).each do |event_picture| %>
+            <a href="<%= event_picture.image.url%>" target="_blank"><img src="<%= event_picture.image.url(:thumb) %>" width="100"></a>
+          <% end %>
         </div>
       </div>
     </div>
