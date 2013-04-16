@@ -10,7 +10,6 @@ Cheval::Application.routes.draw do
   match "/upcoming_events" => "static#upcoming_events", as: :upcoming_events
   match "/past_events" => "static#past_events", as: :past_events
   match "/show_event/:id" => "static#show_event", as: :show_event
-  root to: "static#index"
 
   scope "/admin" do
     root to: "events#index"
@@ -19,4 +18,6 @@ Cheval::Application.routes.draw do
     resources :special_menus
     resources :press_links
   end
+
+  root to: "static#index"
 end

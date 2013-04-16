@@ -15,10 +15,8 @@ gem 'paperclip'
 gem "gritter", "1.0.3"
 gem "nested_form"
 gem 'tinymce-rails'
-
-group :production do
-  gem 'pg'
-end
+gem "twitter"
+gem 'whenever', :require => false
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

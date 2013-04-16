@@ -33,7 +33,11 @@
     <div class="grid_3">
       <div class="content_inner">
       <img src="/assets/twitter.png" style="margin-top:35px;" class="center_img">
-      <p class="large_content">"You aint never seen a mojito like this. Ask bartender Lawrence to make you one. pic.twitter.com/XDIxT8IuLq"</p>
+      <div id="rotator">
+        <% Testimony.order("created_at DESC").limit(10).each do |testimony| %>
+          <p class="large_content"><%= testimony.content %></p>
+        <% end %>
+      </div>
       <h1>Media</h1>
         <div class="gallery">
           <img src="/assets/upcoming.jpg" width="100">
@@ -55,6 +59,30 @@
       'animtype' : 'slide'
     });
   });
+
+  $(window).load(function() {
+    startRotator("#rotator");
+  })
+
+  function rotateBanners(elem) {
+    var active = $(elem+" p.active");
+    var next = active.next();
+    if (next.length == 0) 
+      next = $(elem+" p:first");
+    active.removeClass("active").fadeOut(200, function(){
+      next.addClass("active").fadeIn(200);
+    });
+  };
+   
+  function prepareRotator(elem) {
+    $(elem+" p").fadeOut(0);
+    $(elem+" p:first").fadeIn(0).addClass("active");
+  };
+   
+  function startRotator(elem) {
+    prepareRotator(elem);
+    setInterval("rotateBanners('"+elem+"')", 2500);
+  };
 </script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. 
 <script>

@@ -4,7 +4,7 @@ class SpecialMenusController < ApplicationController
   # GET /special_menus
   # GET /special_menus.json
   def index
-    @special_menus = SpecialMenu.all
+    @special_menus = SpecialMenu.unscoped.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -36,7 +36,7 @@ class SpecialMenusController < ApplicationController
 
   # GET /special_menus/1/edit
   def edit
-    @special_menu = SpecialMenu.find(params[:id])
+    @special_menu = SpecialMenu.unscoped.find(params[:id])
   end
 
   # POST /special_menus
@@ -61,7 +61,7 @@ class SpecialMenusController < ApplicationController
   # PUT /special_menus/1
   # PUT /special_menus/1.json
   def update
-    @special_menu = SpecialMenu.find(params[:id])
+    @special_menu = SpecialMenu.unscoped.find(params[:id])
 
     respond_to do |format|
       if @special_menu.update_attributes(params[:special_menu])
@@ -80,7 +80,7 @@ class SpecialMenusController < ApplicationController
   # DELETE /special_menus/1
   # DELETE /special_menus/1.json
   def destroy
-    @special_menu = SpecialMenu.find(params[:id])
+    @special_menu = SpecialMenu.unscoped.find(params[:id])
     @special_menu.destroy
 
     respond_to do |format|

@@ -34,4 +34,11 @@ Cheval::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  Twitter.configure do |config|
+  config.consumer_key = "Ur911wJyjzYxqRau6wLj0A"
+  config.consumer_secret = "QmH5F06JaJ8itbIc10vzpbCUdvcnGZn4erms8M"
+  config.oauth_token = "802330256-O7yNO781vh1jy6QrvVZAKhezNBhwtKM7cDrjbAGP"
+  config.oauth_token_secret = "7QVENO7C401zNa9jNzpvq9U38gjpqqCB8tZSnQe7qs"
+end
 end

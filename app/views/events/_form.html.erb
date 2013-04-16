@@ -1,4 +1,4 @@
-<%= form_for @event, :html => { :class => 'form-horizontal' } do |f| %>
+<%= nested_form_for @event, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
   <div class="span8">
     <div class="control-group">
       <%= f.label :name, :class => 'control-label' %>
@@ -31,6 +31,30 @@
     <% end %>
   </div>
   <div class="clearfix"></div>
+  <%= f.fields_for :event_pictures do |event_picture| %>
+    <div class="clearfix">
+      <h4>Event Media</h4>
+      <hr>
+      <div class="pull-left">
+        <div class="control-group">
+          <%= event_picture.label :image, event_picture.object.persisted? ? "Change image" : "Image", :class => 'control-label' %>
+          <div class="controls">      
+            <%= event_picture.file_field :image, :class => 'file_field' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <span style="padding-left:75px"></span><%= event_picture.link_to_remove "Remove this menu page" %>
+        </div>
+      </div>
+      <div class="pull-left" style="padding-left: 50px">
+        <% if event_picture.object.persisted? %>
+          <%= link_to image_tag(event_picture.object.image.url(:thumb)), event_picture.object.image.url, :target => "_blank" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <%= f.link_to_add "Add a menu page", :event_pictures %>
+
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-success' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

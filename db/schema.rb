@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414092936) do
+ActiveRecord::Schema.define(:version => 20130416163305) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(:version => 20130414092936) do
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
+
+  create_table "event_pictures", :force => true do |t|
+    t.integer  "event_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "event_pictures", ["event_id"], :name => "index_event_pictures_on_event_id"
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -84,6 +96,14 @@ ActiveRecord::Schema.define(:version => 20130414092936) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.boolean  "hidden"
+  end
+
+  create_table "testimonies", :force => true do |t|
+    t.string   "tweet_id"
+    t.string   "screen_name"
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end

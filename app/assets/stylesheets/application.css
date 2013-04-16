@@ -24,3 +24,11 @@
   overflow: hidden;
   margin: auto;
 }
+
+#rotator{
+  min-height: 100px;
+}
+
+#rotator img { 
+  position: absolute; 
+}

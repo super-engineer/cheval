@@ -5,17 +5,12 @@
     <p><%= @event.description %></p>
     <br>
     <div class="gallery">
-      <img src="/assets/upcoming.jpg" width="100">
-      <img src="/assets/upcoming.jpg" width="100">
-      <img src="/assets/upcoming.jpg" width="100">
-      <img src="/assets/upcoming.jpg" width="100">
-      <img src="/assets/upcoming.jpg" width="100">
-      <img src="/assets/upcoming.jpg" width="100">
-      <img src="/assets/upcoming.jpg" width="100">
-      <img src="/assets/upcoming.jpg" width="100">
+      <% @event.event_pictures.each do |event_picture| %>
+        <a href="<%= event_picture.image.url%>" target="_blank"><img src="<%= event_picture.image.url(:thumb) %>" width="100"></a>
+      <% end %>
     </div>
   </div>
 </div>
 <div class="menu_content">
-    <img src="/assets/something-relevent.png" width="500">
+    <img src=<%= @event.poster.url %> width="500">
 </div>
