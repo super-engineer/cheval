@@ -5,7 +5,7 @@ require "whenever/capistrano"
 set :application, "cheval"
 set :repository,  "git@github.com:super-engineer/cheval.git"
 set :scm, :git
-set :server_name, "50.57.71.208"
+set :server_name, "chevalmumbai.com"
 set :user, "webadmin"
 set :runner, "webadmin"
 set :password, "Qwerty123!"
@@ -111,7 +111,7 @@ namespace :init do
   task :create_vhost do
 
     vhost_configuration = %(
-      <VirtualHost *:8080>
+      <VirtualHost *:80>
         ServerName #{server_name}
         DocumentRoot #{base_path}/#{application}/current/public
         <Directory #{base_path}/#{application}/current/public>

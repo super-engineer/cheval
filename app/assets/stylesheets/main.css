@@ -31,7 +31,7 @@ ul {
 }
 
 .grid_6 {
-  width: 595px;
+  width: 715px;
   float: left;
 }
 
@@ -244,6 +244,7 @@ h2 {
   line-height: 26px;
   position: relative;
   z-index: 10;
+  overflow: scroll;
 }
 
 .about_content ul {

@@ -1,10 +1,8 @@
 /*
-*= require bootstrap_and_overrides
 *= require gritter
 *= require bootstrap
 *= require_self
 */
-
 
 html, body {
     height: 100%;
