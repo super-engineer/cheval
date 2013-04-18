@@ -28,12 +28,12 @@
         <a class="logo" href="<%= root_path %>"></a>
         <div class="top_nav">
           <ul>
-            <li><a href="<%= about_path %>">About Us</a></li>
-            <li><a href="<%= menu_path %>">Menus</a></li>
-            <li><a href="<%= photos_path %>">Food and Bar Gallery</a></li>
-            <li><a href="<%= art_club_path %>">Cheval Art Club</a></li>
-            <li><a href="<%= press_path %>">Press</a></li>
-            <li><a href="<%= contact_path %>">Contact</a></li>
+            <li><a href="<%= about_path %>" class="<%='active' if params[:action] == 'about'%>">About Us</a></li>
+            <li><a href="<%= menu_path %>" class="<%='active' if params[:action] == 'menu'%>">Menus</a></li>
+            <li><a href="<%= photos_path %>" class="<%='active' if params[:action] == 'photos'%>">Food and Bar Gallery</a></li>
+            <li><a href="<%= art_club_path %>" class="<%='active' if params[:action] == 'art_club'%>">Cheval Art Club</a></li>
+            <li><a href="<%= press_path %>" class="<%= params[:action] == 'press'%>">Press</a></li>
+            <li><a href="<%= contact_path %>" class="<%='active' if params[:action] == 'contact'%>">Contact</a></li>
           </ul>
         </div>
       </div>        
