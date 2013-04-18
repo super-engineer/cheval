@@ -15,11 +15,11 @@
         <% if Event.upcoming.count > 0 %>
           <% Event.upcoming.each do |event| %>
             <div class="event_container">
-              <%= image_tag event.poster.url(:cropped), :size => "250x250" %>
+              <%= image_tag event.thumbnail_poster.url(:cropped), :size => "250x250" %>
               <div class="link_content">
                 <p class="date"><%= event.scheduled_on.strftime("#{event.scheduled_on.day.ordinalize} %b %Y") %></p>
                 <a href="<%= show_event_path(:id => event.id) %>"><%= event.name %></a>
-                <p><%= event.description %></p>
+                <p><%= truncate(event.description, :length => 250) %></p>
               </div>
             </div>
           <% end %>

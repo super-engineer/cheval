@@ -7,7 +7,7 @@
         <% Event.past.each_with_index do |event, i| %>
           <% if i%2 == 0 %>
             <div class="event_container">
-              <img src="<%= event.poster.url(:cropped) %>" width="150">
+              <img src="<%= event.thumbnail_poster.url(:cropped) %>" width="150">
               <div class="link_content">
                 <p class="date"><%= event.scheduled_on.strftime("#{event.scheduled_on.day.ordinalize} %b %Y") %></p>
                 <a href="<%= show_event_path(:id => event.id) %>"><%= event.name %></a>
@@ -24,7 +24,7 @@
         <% Event.past.each_with_index do |event, i| %>
           <% if i%2 == 1 %>
             <div class="event_container">
-              <img src="<%= event.poster.url(:cropped) %>" width="150">
+              <img src="<%= event.thumbnail_poster.url(:cropped) %>" width="150">
               <div class="link_content">
                 <p class="date"><%= event.scheduled_on.strftime("#{event.scheduled_on.day.ordinalize} %b %Y") %></p>
                 <a href="<%= show_event_path(:id => event.id) %>"><%= event.name %></a>

@@ -22,6 +22,6 @@
 //= require tinymce
 //= require_tree .
 
-// $(function(){
-//   ('.datepicker').datepicker({dateFormat: "d MM, yy"});
-// });
+$(function(){
+  $('.datepicker').datepicker({dateFormat: "d MM, yy"});
+});

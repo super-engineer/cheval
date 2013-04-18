@@ -1,6 +1,8 @@
 /*
-*= require gritter
 *= require bootstrap
+*= require bootstrap_and_overrides
+*= require gritter
+*= jquery-ui
 *= require_self
 */
 

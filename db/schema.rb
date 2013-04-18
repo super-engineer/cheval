@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130416163305) do
+ActiveRecord::Schema.define(:version => 20130418142555) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -48,12 +48,16 @@ ActiveRecord::Schema.define(:version => 20130416163305) do
     t.date     "scheduled_on"
     t.text     "description"
     t.boolean  "done"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "poster_file_name"
     t.string   "poster_content_type"
     t.integer  "poster_file_size"
     t.datetime "poster_updated_at"
+    t.string   "thumbnail_poster_file_name"
+    t.string   "thumbnail_poster_content_type"
+    t.integer  "thumbnail_poster_file_size"
+    t.datetime "thumbnail_poster_updated_at"
   end
 
   create_table "menu_images", :force => true do |t|
@@ -93,9 +97,13 @@ ActiveRecord::Schema.define(:version => 20130416163305) do
   create_table "special_menus", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.boolean  "hidden"
+    t.string   "thumbnail_image_file_name"
+    t.string   "thumbnail_image_content_type"
+    t.integer  "thumbnail_image_file_size"
+    t.datetime "thumbnail_image_updated_at"
   end
 
   create_table "testimonies", :force => true do |t|

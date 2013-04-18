@@ -7,9 +7,15 @@
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :poster, "#{@event.persisted? ? 'Change poster' : 'poster' }", :class => 'control-label' %>
+      <%= f.label :poster, "#{@event.persisted? ? 'Change poster' : 'Poster' }", :class => 'control-label' %>
       <div class="controls">
         <%= f.file_field :poster, :class => 'text_field' %>
+      </div>
+    </div>  
+    <div class="control-group">
+      <%= f.label :thumbnail_poster, "#{@event.persisted? ? 'Change poster thmbnail' : 'Poster thmbnail' }", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.file_field :thumbnail_poster, :class => 'text_field' %>
       </div>
     </div>  
     <div class="control-group">
@@ -27,7 +33,13 @@
   </div>
   <div class="span3">
     <% unless @event.poster.blank? %>
-      <%= image_tag @event.poster.url(:cropped) %>
+      Event Poster <br>
+      <%= image_tag @event.poster.url, :width => 270 %>
+    <% end %>
+    <br><br>
+    <% unless @event.thumbnail_poster.blank? %>
+      Event Poster thumbnail<br>
+      <%= image_tag @event.thumbnail_poster.url(:cropped), :width => 270 %>
     <% end %>
   </div>
   <div class="clearfix"></div>
@@ -53,7 +65,7 @@
       </div>
     </div>
   <% end %>
-  <%= f.link_to_add "Add a menu page", :event_pictures %>
+  <%= f.link_to_add "Add event media", :event_pictures %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-success' %>
