@@ -20,7 +20,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= image_tag event.poster.url(:cropped), :size => "100x100" %></td>
+        <td><%= image_tag event.thumbnail_poster.url(:cropped), :size => "100x100" %></td>
         <td><%= event.name %></td>
         <td><%= event.scheduled_on.strftime("%d %B, %Y") rescue "" %></td>
         <td style="width:400px"><%= truncate(event.description, length: 160) %></td>
