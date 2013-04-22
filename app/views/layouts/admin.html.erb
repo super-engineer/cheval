@@ -33,7 +33,16 @@
                 <li><%= link_to "Press Links", press_links_path %></li>
               </ul>
               <ul class="pull-right nav">
-                <li><%= link_to "Logout", destroy_admin_session_path, :method => :delete %></li>
+                <% if admin_signed_in? %>
+                  <li class="dropdown">
+                      <%= link_to current_admin.email, "javascript:void(0)", :method => :delete, "data-toggle" => "dropdown", :class => "dropdown-toggle" %>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                        <li><%= link_to "Settings", edit_admin_registration_path %></li>
+                        <li><%= link_to "Logout", destroy_admin_session_path, :method => :delete %></li>
+                      </ul>
+                    </li>
+                <% end %>
+                
               </ul>
             </div><!--/.nav-collapse -->
           </div>

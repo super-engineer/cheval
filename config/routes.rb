@@ -1,5 +1,9 @@
 Cheval::Application.routes.draw do
-  devise_for :admins
+devise_for :admins, :controllers => {:registrations => "registrations"}, :skip => [:registrations]
+as :admin do
+  get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
+  put 'admins' => 'devise/registrations#update', :as => 'admin_registration'
+end
 
   match "/about" => "static#about", as: :about
   match "/menu" => "static#menu", as: :menu
