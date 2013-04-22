@@ -238,7 +238,7 @@ h2 {
 
 .about_content {
   width: 700px;
-  height: 500px;
+  min-height: 500px;
   margin-bottom: 20px;
   padding: 20px;
   float: right;
