@@ -28,6 +28,7 @@
         <a class="logo" href="<%= root_path %>"></a>
         <div class="top_nav">
           <ul>
+            <li><a href="<%= root_path %>" class="<%='active' if params[:action] == 'index' %>">Home</a></li>
             <li><a href="<%= about_path %>" class="<%='active' if params[:action] == 'about'%>">About Us</a></li>
             <li><a href="<%= menu_path %>" class="<%='active' if params[:action] == 'menu'%>">Menus</a></li>
             <li><a href="<%= photos_path %>" class="<%='active' if params[:action] == 'photos'%>">Food and Bar Gallery</a></li>
