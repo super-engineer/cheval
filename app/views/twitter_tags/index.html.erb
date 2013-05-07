@@ -1,0 +1,37 @@
+<%- model_class = TwitterTag -%>
+<div class="page-header">
+  <h1>
+    <%=t '.title', :default => model_class.model_name.human.pluralize %>
+    <%= link_to new_twitter_tag_path, :class => 'btn btn-success pull-right' do %>
+      <i class='icon-plus icon-white'></i> Add a new hash tag
+    <% end %>
+  </h1>
+</div>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:active) %></th>
+      <th>Created on</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @twitter_tags.each do |twitter_tag| %>
+      <tr>
+        <td>#<%= twitter_tag.tag %></td>
+        <td><%= twitter_tag.active ? "Yes" : "No" %></td>
+        <td><%= twitter_tag.created_at.strftime("%d %B, %Y") %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_twitter_tag_path(twitter_tag), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      twitter_tag_path(twitter_tag),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

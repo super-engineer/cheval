@@ -1,0 +1,22 @@
+<%= form_for @twitter_tag, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="pull-left span9">
+    <div class="control-group">
+      <%= f.label :tag, "Hashtag", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :tag, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :active, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.check_box :active, :class => 'check_box' %>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                twitter_tags_path, :class => 'btn' %>
+  </div>
+<% end %>

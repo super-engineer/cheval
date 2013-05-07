@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130418142555) do
+ActiveRecord::Schema.define(:version => 20130507154834) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(:version => 20130418142555) do
     t.string   "thumbnail_poster_content_type"
     t.integer  "thumbnail_poster_file_size"
     t.datetime "thumbnail_poster_updated_at"
+    t.text     "youtube_url"
+  end
+
+  create_table "food_sliders", :force => true do |t|
+    t.boolean  "hidden"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "menu_images", :force => true do |t|
@@ -112,6 +123,13 @@ ActiveRecord::Schema.define(:version => 20130418142555) do
     t.text     "content"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "twitter_tags", :force => true do |t|
+    t.string   "tag"
+    t.boolean  "active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

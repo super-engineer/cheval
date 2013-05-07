@@ -3,10 +3,10 @@
   <div class="sidebar">
     <% PressLink.all.each do |press_link| %>
       <div class="link_container">
-        <img src="<%= press_link.image.url(:thumb) %>" width="120">
+        <a href="<%= press_link.url %>" target="_blank"><img src="<%= press_link.image.url(:thumb) %>" width="120"></a>
         <div class="link_content">
-          <a href="<%= press_link.url %>" target="_blank"><%= press_link.url %></a>
-          <p><%= truncate(press_link.description, :length => 120) %></p>
+          <a href="<%= press_link.url %>" target="_blank"><%= truncate(press_link.description, :length => 120) %></a>
+          
         </div>
       </div>
     <% end %>

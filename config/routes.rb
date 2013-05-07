@@ -1,4 +1,10 @@
 Cheval::Application.routes.draw do
+  resources :twitter_tags
+
+
+  resources :food_sliders
+
+
 devise_for :admins, :controllers => {:registrations => "registrations"}, :skip => [:registrations]
 as :admin do
   get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'

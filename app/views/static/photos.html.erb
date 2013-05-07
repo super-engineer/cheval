@@ -1,16 +1,9 @@
 <div class="main_content press_content">
   <div id="gallery">
     <ul class="bjqs">
-      <li><img src="/assets/bar_1.jpg"></li>
-      <li><img src="/assets/bar_2.jpg"></li>
-      <li><img src="/assets/bar_3.jpg"></li>
-      <li><img src="/assets/bar_4.jpg"></li>
-      <li><img src="/assets/bar_5.jpg"></li>
-      <li><img src="/assets/food_1.png"></li>
-      <li><img src="/assets/food_2.jpg"></li>
-      <li><img src="/assets/food_4.jpg"></li>
-      <li><img src="/assets/food_5.jpg"></li>
-      <li><img src="/assets/food_6.jpg"></li>
+      <% FoodSlider.where(:hidden => false).each do |food_slider| %>
+        <li><%= image_tag food_slider.image.url(:cropped) %></li>
+      <% end %>
     </ul>
   </div>
 </div>        

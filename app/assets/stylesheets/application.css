@@ -32,3 +32,12 @@
 #rotator img { 
   position: absolute; 
 }
+
+.social a {
+  margin-left: 30px;
+  opacity: 0.8;
+}
+
+.social a:hover {
+  opacity: 1;
+}

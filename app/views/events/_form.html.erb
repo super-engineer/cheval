@@ -30,6 +30,12 @@
         <%= f.text_area :description, :class => 'text_area', :size => "50x8", :style => "width:auto" %>
       </div>
     </div>
+    <div class="control-group">
+      <%= f.label :youtube_url, "Youtube Embed Code (Keep the width less than 500px)", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :youtube_url, :class => 'text_area', :size => "50x8", :style => "width:auto" %>
+      </div>
+    </div>
   </div>
   <div class="span3">
     <% unless @event.poster.blank? %>
@@ -43,7 +49,7 @@
     <% end %>
   </div>
   <div class="clearfix"></div>
-  <%= f.fields_for :event_pictures do |event_picture| %>
+<!--   <%= f.fields_for :event_pictures do |event_picture| %>
     <div class="clearfix">
       <h4>Event Media</h4>
       <hr>
@@ -65,7 +71,7 @@
       </div>
     </div>
   <% end %>
-  <%= f.link_to_add "Add event media", :event_pictures %>
+  <%= f.link_to_add "Add event media", :event_pictures %> -->
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-success' %>
