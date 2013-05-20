@@ -19,7 +19,9 @@
               <div class="link_content">
                 <p class="date"><%= event.scheduled_on.strftime("#{event.scheduled_on.day.ordinalize} %b %Y") %></p>
                 <a href="<%= show_event_path(:id => event.id) %>"><%= event.name %></a>
-                <p><%= truncate(event.description, :length => 250) %></p>
+                <p><%= truncate(event.description, :length => 270) %>
+                  <a style="color:#f26522; font-size: 14px; line-height:22px; font-weight:normal" href="<%= show_event_path(event.id) %>">View Details</a>
+                </p>
               </div>
             </div>
           <% end %>

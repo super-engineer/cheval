@@ -1,16 +1,19 @@
 <div class="main_content art_content">
   <div class="center_content">
-    <div class="grid_6">
+    <div class="grid_12">
       <div class="content_inner">
         <h1 class="fleft">Past events</h1>
         <div class="clear"></div>
         <% Event.past.each_with_index do |event, i| %>
-          <div class="event_container">
+          <div class="event_container small_event_container">
             <img src="<%= event.thumbnail_poster.url(:cropped) %>" width="150">
             <div class="link_content">
               <p class="date"><%= event.scheduled_on.strftime("#{event.scheduled_on.day.ordinalize} %b %Y") %></p>
               <a href="<%= show_event_path(:id => event.id) %>"><%= event.name %></a>
-              <p><%= truncate(event.description, :length => 120) %></p>
+              <p>
+                <%= truncate(event.description, :length => 120) %>
+                <a style="color:#f26522; font-size: 14px; line-height:22px; font-weight:normal" href="<%= show_event_path(event.id) %>">View Details</a>
+              </p>
             </div>
           </div>
         <% end %>

@@ -41,3 +41,8 @@
 .social a:hover {
   opacity: 1;
 }
+
+.small_event_container {
+  float: left;
+  height: 190px;
+}
