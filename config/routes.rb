@@ -27,6 +27,7 @@ end
     resources :slider_images  
     resources :special_menus
     resources :press_links
+    resources :print_media
   end
 
   root to: "static#index"

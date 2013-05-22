@@ -451,12 +451,14 @@ a.past_events_link {
   width: 500px;
 }
 
-.press_article_preview {
+.press_article_preview{
   float: right;
+}
+
+.press_article_preview .child {
   width: 600px;
   height: 750px;
   background-color: rgba(255,255,255,0.8);
-
 }
 
 .content_inner h2 {

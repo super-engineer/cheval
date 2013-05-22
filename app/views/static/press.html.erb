@@ -1,17 +1,24 @@
 <div class="main_content press_content">
-  <h1>Press Articles</h1>
   <div class="sidebar">
+    <h1>Digital Media</h1>
     <% PressLink.all.each do |press_link| %>
       <div class="link_container">
         <a href="<%= press_link.url %>" target="_blank"><img src="<%= press_link.image.url(:thumb) %>" width="120"></a>
         <div class="link_content">
-          <a href="<%= press_link.url %>" target="_blank"><%= truncate(press_link.description, :length => 120) %></a>
-          
+          <a href="<%= press_link.url %>" target="_blank"><%= truncate(press_link.description, :length => 120) %></a>          
         </div>
       </div>
     <% end %>
   </div>
   <div class="press_article_preview">
+    <h1>Print Media</h1>
+    <div id="press_slider" class="child">
+      <ul class="bjqs">
+        <% PrintMedium.where(:hidden => false).order("updated_at DESC").each do |print_media| %>
+          <li><img src="<%= print_media.image.url(:cropped) %>"></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 
