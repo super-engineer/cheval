@@ -24,7 +24,7 @@
     </div>
     <div class="grid_3">
       <div class="content_inner">
-      <h1><a href="menu#cheval-tab">Special Menu</a></h1>
+      <h1><a href="menu#cheval-tab">Specials Menu</a></h1>
       <% special_menu = SpecialMenu.where("hidden = false").order("updated_at DESC").first %>
       <% unless special_menu.nil? %>
         <div class="special-menu-image">
@@ -41,7 +41,7 @@
     <div class="grid_3">
       <div class="content_inner">
       <h1>Social</h1>
-      <img src="/assets/twitter.png" style="margin-top:35px;" class="center_img">
+      <a href="http://twitter.com/chevalmumbai"><img src="/assets/twitter.png" style="margin-top:35px;" class="center_img"></a>
       <div id="rotator">
         <% Testimony.order("created_at DESC").limit(10).each do |testimony| %>
           <p class="large_content"><%= testimony.content %></p>
@@ -50,6 +50,7 @@
       <div class="social">
         <a target="_blank" href="http://www.facebook.com/chevalmumbai"><img src="/assets/facebook.png"></a>
         <a target="_blank" href="http://www.instagram.com/chevalmumbai"><img src="/assets/instagram.png"></a>
+        <a target="_blank" href="http://www.zomato.com/mumbai/cheval-bar-restaurant-fort"><img src="/assets/zomato.png"></a>
       </div>
     </div>
     <div class="clear"></div>

@@ -46,3 +46,7 @@
   float: left;
   height: 190px;
 }
+
+.social a img {
+   width: 83px
+}
