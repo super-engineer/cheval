@@ -4,8 +4,8 @@ class Event < ActiveRecord::Base
   has_attached_file :poster, :default_url => "/assets/missing.png"
   has_attached_file :thumbnail_poster, :styles => { :cropped => "270x270!" }, :default_url => "/assets/missing.png"
   # default_scope order("created_at DESC")
-  scope :upcoming, where("scheduled_on >= ?", (Date.today-1.days)).order("scheduled_on ASC")
-  scope :past, where("scheduled_on < ?", (Date.today-1.days)).order("scheduled_on DESC")
+  scope :upcoming, lambda { where("scheduled_on >= ?", (Date.today-1.days)).order("scheduled_on ASC") }
+  scope :past, lambda { where("scheduled_on < ?", (Date.today-1.days)).order("scheduled_on DESC") }
   validates_presence_of :name, :scheduled_on, :poster, :description
   accepts_nested_attributes_for :event_pictures, :allow_destroy => true
 end
